@@ -4,17 +4,71 @@
   box-sizing: border-box;
 }
 
-h1, h3, p {
+.top-container {
+  display: flex;
+  justify-content: center;
+  background-color: #e5f3f2;
+  height: 200px;
+}
+
+.top-org {
+  width: 60%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h3,
+.quality {
   font-family: "Roboto Slab";
 }
 
-input, button {
+input,
+button,
+p {
   font-family: "Open Sans";
 }
 
 h1 {
   color: #00a79d;
+  text-align: center;
+  font-size: 40px;
+  margin: 16px 0 16px 0;
 }
+
+.h1-box {
+  color: #6d6e71;
+}
+
+input,
+.save-btn {
+  display: block;
+  margin: auto;
+  width: 400px;
+  height: 24px;
+}
+
+input {
+  margin-bottom: 12px;
+}
+
+input:focus {
+  outline-color: #00a79d;
+  outline-style: auto;
+}
+
+.save-btn {
+  background-color: #00a79d;
+  color: #fff;
+  border: none;
+}
+
+.save-btn:hover {
+  background-color: #045e55;
+}
+
+/*IDE CARDS*/
 
 h3 {
   color: #6d6e71;
@@ -28,11 +82,6 @@ p {
   color: #6d6e71;
 }
 
-.save-btn {
-  background-color: #00a79d;
-  color: #fff;
-}
-
-.top-container {
-  background-color: #e5f3f2;
+.search {
+  margin-top: 20px;
 }
