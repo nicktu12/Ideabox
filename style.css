@@ -119,6 +119,7 @@ input:focus {
 }
 
 .card {
+  position: relative;
   display: block;
   margin: auto;
   margin-top: 18px;
@@ -133,6 +134,9 @@ input:focus {
 }
 
 .delete {
+  position: absolute;
+  top: 4px;
+  left: 480px;
   display: inline-block;
   float: right;
   height: auto;
@@ -142,12 +146,15 @@ input:focus {
 
 .card-text {
   display: inline-block;
-  margin-bottom: 12px;
+  margin-bottom: 50px;
   font-size: 14px;
   color: #939598;
 }
 
 .quality {
+  position: absolute;
+  top: 86px;
+  left: 80px;
   display: inline-block;
   margin-bottom: 24px;
   font-size: 14px;
@@ -159,6 +166,18 @@ input:focus {
   height: auto;
   margin-right: 8px;
   width: 22px;
+}
+
+.up-vote {
+  position: absolute;
+  top: 86px;
+  left: 0;
+}
+
+.down-vote {
+  position: absolute;
+  top: 86px;
+  left: 40px;
 }
 
 /*MEDIA QUERIES*/
@@ -190,5 +209,18 @@ input:focus {
   .card {
     width: 300px;
   }
-  
+
+  .delete {
+    left: 281px;
+  }
+
+  .up-vote,
+  .down-vote {
+    top: 105px;
+  }
+
+  .quality {
+    top:105px;
+    padding-bottom: 50px;
+  }
 }
