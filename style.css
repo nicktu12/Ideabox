@@ -123,15 +123,18 @@ input:focus {
 .card {
   position: relative;
   display: block;
+  height: 150px;
   margin: auto;
   margin-top: 18px;
   width: 500px;
   border-bottom: 1px solid #d1d3d4;
-  height: 125px;
 }
 
 .card-title {
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
   margin-bottom: 12px;
   color: #6d6e71;
 }
@@ -148,18 +151,19 @@ input:focus {
 }
 
 .card-text {
+  position: absolute;
+  top: 35px;
+  left: 0;
   display: inline-block;
-  margin-bottom: 50px;
   font-size: 14px;
   color: #939598;
-  /*overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;*/
+  overflow: scroll;
+  height: 56px;
 }
 
 .quality {
   position: absolute;
-  top: 86px;
+  top: 105px;
   left: 80px;
   display: inline-block;
   margin-bottom: 24px;
@@ -176,15 +180,16 @@ input:focus {
 
 .up-vote {
   position: absolute;
-  top: 86px;
+  top: 105px;
   left: 0;
 }
 
 .down-vote {
   position: absolute;
-  top: 86px;
+  top: 105px;
   left: 40px;
 }
+
 
 /*MEDIA QUERIES*/
 @media (max-width: 770px) {
