@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   background-color: #e5f3f2;
-  height: 210px;
+  height: 215px;
 }
 
 .top-org {
@@ -47,11 +47,17 @@ input,
   margin: auto;
   width: 500px;
   height: 26px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 input {
   margin-bottom: 14px;
+  border: 1.5px solid #dbd9d9;
+  padding-left: 5px;
+}
+
+input::placeholder {
+  color: #dbd9d9;
 }
 
 input:focus {
@@ -75,24 +81,30 @@ input:focus {
   /*display: flex;*/
 }
 
+.search-form {
+  padding-bottom: 12px;
+}
+
 .search {
   display: block;
   margin: auto;
   width: 500px;
   height: 26px;
   margin-top: 20px;
-  margin-bottom: 24px;
-  /*flex-wrap: wrap;*/
+  border: 1.5px solid #dbd9d9;
+  font-size: 15px;
+}
+
+.search::placeholder {
+  color: #dbd9d9;
 }
 
 .card {
   display: block;
   margin: auto;
-  /*flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;*/
   width: 500px;
   border-bottom: 1px solid #d1d3d4;
+  margin-top: 18px;
 }
 
 .card-title {
@@ -105,6 +117,7 @@ input:focus {
   display: inline-block;
   width: 22px;
   height: auto;
+  float: right;
 }
 
 .card-text {
@@ -118,14 +131,12 @@ input:focus {
   color: #6d6e71;
   display: inline-block;
   margin-bottom: 24px;
+  font-size: 14px;
 }
-/*
-button {
-  display: inline-block;
-}*/
 
 .up-vote,
 .down-vote {
   width: 22px;
   height: auto;
+  margin-right: 8px;
 }
