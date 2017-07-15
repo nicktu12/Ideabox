@@ -1,7 +1,14 @@
+/*TABLE OF CONTENTS*/
+/*REUSEABLE*/
+/*TOP CONTAINER*/
+/*BOTTOM CONTAINER*/
+/*MEDIA QUERIES*/
+
+/*REUSEABLE*/
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .top-container {
@@ -12,7 +19,6 @@
 }
 
 .top-org {
-  /*width: 60%;*/
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -30,11 +36,25 @@ p {
   font-family: "Open Sans";
 }
 
+/*TOP CONTAINER*/
+.top-container {
+  display: flex;
+  height: 220px;
+  justify-content: center;
+  background-color: #e5f3f2;
+}
+
+.top-org {
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 h1 {
-  color: #00a79d;
   text-align: center;
+  margin: 18px 0 18px 0;
+  color: #00a79d;
   font-size: 40px;
-  margin: 16px 0 16px 0;
 }
 
 .h1-box {
@@ -44,16 +64,16 @@ h1 {
 input,
 .save-btn {
   display: block;
+  height: 26px;
   margin: auto;
   width: 500px;
-  height: 26px;
   font-size: 15px;
 }
 
 input {
   margin-bottom: 14px;
-  border: 1.5px solid #dbd9d9;
   padding-left: 5px;
+  border: 1.5px solid #dbd9d9;
 }
 
 input::placeholder {
@@ -67,8 +87,8 @@ input:focus {
 
 .save-btn {
   background-color: #00a79d;
-  color: #fff;
   border: none;
+  color: #fff;
 }
 
 .save-btn:hover {
@@ -76,9 +96,8 @@ input:focus {
 }
 
 /*BOTTOM CONTAINER*/
-
-.bottom-container {
-  /*display: flex;*/
+.search-form {
+  padding-bottom: 12px;
 }
 
 .search-form {
@@ -87,10 +106,10 @@ input:focus {
 
 .search {
   display: block;
-  margin: auto;
-  width: 500px;
   height: 26px;
+  margin: auto;
   margin-top: 20px;
+  width: 500px;
   border: 1.5px solid #dbd9d9;
   font-size: 15px;
 }
@@ -102,41 +121,42 @@ input:focus {
 .card {
   display: block;
   margin: auto;
+  margin-top: 18px;
   width: 500px;
   border-bottom: 1px solid #d1d3d4;
-  margin-top: 18px;
 }
 
 .card-title {
-  color: #6d6e71;
   display: inline-block;
   margin-bottom: 12px;
+  color: #6d6e71;
 }
 
 .delete {
   display: inline-block;
-  width: 22px;
+  float: right;
   height: auto;
+  width: 22px;
   float: right;
 }
 
 .card-text {
-  color: #939598;
   display: inline-block;
-  font-size: 14px;
   margin-bottom: 12px;
+  font-size: 14px;
+  color: #939598;
 }
 
 .quality {
-  color: #6d6e71;
   display: inline-block;
   margin-bottom: 24px;
   font-size: 14px;
+  color: #6d6e71;
 }
 
 .up-vote,
 .down-vote {
-  width: 22px;
   height: auto;
   margin-right: 8px;
+  width: 22px;
 }
