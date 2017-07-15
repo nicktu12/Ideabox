@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h3, p {
+  font-family: "Roboto Slab";
+}
+
+input, button {
+  font-family: "Open Sans";
+}
+
+h1 {
+  color: #00a79d;
+}
+
+h3 {
+  color: #6d6e71;
+}
+
+p {
+  color: #939598;
+}
+
+.quality {
+  color: #6d6e71;
+}
+
+.save-btn {
+  background-color: #00a79d;
+  color: #fff;
+}
+
+.top-container {
+  background-color: #e5f3f2;
+}
