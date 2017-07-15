@@ -8,11 +8,11 @@
   display: flex;
   justify-content: center;
   background-color: #e5f3f2;
-  height: 200px;
+  height: 210px;
 }
 
 .top-org {
-  width: 60%;
+  /*width: 60%;*/
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -45,12 +45,13 @@ input,
 .save-btn {
   display: block;
   margin: auto;
-  width: 400px;
-  height: 24px;
+  width: 500px;
+  height: 26px;
+  font-size: 16px;
 }
 
 input {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 input:focus {
@@ -68,20 +69,63 @@ input:focus {
   background-color: #045e55;
 }
 
-/*IDE CARDS*/
+/*BOTTOM CONTAINER*/
 
-h3 {
-  color: #6d6e71;
+.bottom-container {
+  /*display: flex;*/
 }
 
-p {
+.search {
+  display: block;
+  margin: auto;
+  width: 500px;
+  height: 26px;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  /*flex-wrap: wrap;*/
+}
+
+.card {
+  display: block;
+  margin: auto;
+  /*flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;*/
+  width: 500px;
+  border-bottom: 1px solid #d1d3d4;
+}
+
+.card-title {
+  color: #6d6e71;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.delete {
+  display: inline-block;
+  width: 22px;
+  height: auto;
+}
+
+.card-text {
   color: #939598;
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 12px;
 }
 
 .quality {
   color: #6d6e71;
+  display: inline-block;
+  margin-bottom: 24px;
 }
+/*
+button {
+  display: inline-block;
+}*/
 
-.search {
-  margin-top: 20px;
+.up-vote,
+.down-vote {
+  width: 22px;
+  height: auto;
 }
