@@ -127,10 +127,11 @@ input:focus {
   margin-top: 18px;
   width: 500px;
   border-bottom: 1px solid #d1d3d4;
+  height: 125px;
 }
 
 .card-title {
-  display: inline-block;
+  display: block;
   margin-bottom: 12px;
   color: #6d6e71;
 }
@@ -151,6 +152,9 @@ input:focus {
   margin-bottom: 50px;
   font-size: 14px;
   color: #939598;
+  /*overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;*/
 }
 
 .quality {
@@ -210,6 +214,7 @@ input:focus {
 
   .card {
     width: 300px;
+    height: 140px;
   }
 
   .delete {
