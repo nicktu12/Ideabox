@@ -11,6 +11,19 @@
   padding: 0;
 }
 
+.top-container {
+  display: flex;
+  justify-content: center;
+  background-color: #e5f3f2;
+  height: 215px;
+}
+
+.top-org {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 h1,
 h3,
 .quality {
@@ -87,6 +100,10 @@ input:focus {
   padding-bottom: 12px;
 }
 
+.search-form {
+  padding-bottom: 12px;
+}
+
 .search {
   display: block;
   height: 26px;
@@ -120,6 +137,7 @@ input:focus {
   float: right;
   height: auto;
   width: 22px;
+  float: right;
 }
 
 .card-text {
@@ -134,7 +152,6 @@ input:focus {
   margin-bottom: 24px;
   font-size: 14px;
   color: #6d6e71;
-
 }
 
 .up-vote,
