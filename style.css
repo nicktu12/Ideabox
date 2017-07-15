@@ -160,3 +160,35 @@ input:focus {
   margin-right: 8px;
   width: 22px;
 }
+
+/*MEDIA QUERIES*/
+@media (max-width: 770px) {
+/*for some reason this is cutting at 962*/
+  h1 {
+    margin: 8px 0 8px 0;
+    font-size: 34px;
+  }
+
+  input,
+  .save-btn {
+    width: 300px;
+  }
+
+  input {
+    margin-bottom: 8px;
+    padding-left: 5px;
+  }
+
+  .search {
+    width: 300px;
+  }
+
+  #idea-info {
+    height: 75px;
+  }
+
+  .card {
+    width: 300px;
+  }
+  
+}
