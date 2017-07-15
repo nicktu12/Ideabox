@@ -58,6 +58,16 @@ input:focus {
   outline-style: auto;
 }
 
+.save-btn {
+  background-color: #00a79d;
+  color: #fff;
+  border: none;
+}
+
+.save-btn:hover {
+  background-color: #045e55;
+}
+
 /*IDE CARDS*/
 
 h3 {
@@ -70,16 +80,6 @@ p {
 
 .quality {
   color: #6d6e71;
-}
-
-.save-btn {
-  background-color: #00a79d;
-  color: #fff;
-  border: none;
-}
-
-.save-btn:hover {
-  background-color: #045e55;
 }
 
 .search {
