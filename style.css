@@ -97,7 +97,8 @@ input:focus {
 }
 
 /*BOTTOM CONTAINER*/
-.search-form {
+
+  .search-form {
   padding-bottom: 12px;
 }
 
