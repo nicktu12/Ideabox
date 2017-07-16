@@ -11,14 +11,6 @@
   padding: 0;
 }
 
-.top-org {
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  posion: fixed;
-
-}
-
 h1,
 h3,
 .quality {
@@ -199,7 +191,14 @@ input:focus {
 
 /*MEDIA QUERIES*/
 @media (max-width: 770px) {
-/*for some reason this is cutting at 962*/
+  .top-org {
+    position: static;
+  }
+
+  .bottom {
+    overflow: auto;
+  }
+
   h1 {
     margin: 8px 0 8px 0;
     font-size: 34px;
