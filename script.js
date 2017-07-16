@@ -86,3 +86,10 @@ function downvoteFunction () {
 //       $('.list-sort').attr('colspan', 6);
 //   }
 // });
+
+$saveButton.on('click', clearInputFields);
+
+function clearInputFields() {
+  $('#idea-title').val('');
+  $('#idea-info').val('');
+};
