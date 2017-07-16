@@ -14,9 +14,9 @@ var IndexCard = function(title, body, id) {
 IndexCard.prototype.build = function() {
        $('.bottom-container').prepend(
          `<article id="${this.id}" class="card">
-           <h3 class="card-title">${this.title}</h3>
+           <h3 class="card-title" contenteditable="true">${this.title}</h3>
            <img class="delete" src="assets/delete.svg" alt="delete button" />
-           <p class="card-text">${this.body}</p>
+           <p class="card-text" contenteditable="true">${this.body}</p>
            <img class="up-vote" src="assets/upvote.svg" alt="up-vote button" />
            <img class="down-vote" src="assets/downvote.svg" alt="down-vote button" />
            <p class="quality">quality: <span id="quality-text">${this.quality}</span></p>
