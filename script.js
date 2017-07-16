@@ -93,3 +93,26 @@ function clearInputFields() {
   $('#idea-title').val('');
   $('#idea-info').val('');
 };
+
+// var $searchInput = $('.search');
+// $searchInput.on('keyup', runSearch);
+//I THINK THIS WILL START WORKING IF WE GET OBJECTS-ARRAYS
+// function runSearch() {
+//   var filter = $(this).val();
+//   console.log(filter);
+//   $('.card').each(function () {
+//     if ($(this).text().search(new RegExp(filter, 'i')) < 0) {
+//       $(this).fadeOut();
+//     } else {
+//       $(this).fadeIn();
+//     }
+//   });
+// };
+
+//mine:
+// function runSearch() {
+//   var search = $(this).val();
+//   console.log(search);
+//   $('$searchInput:contains(' + search + ')').closest('.card-title').show();
+//   $('$searchInput:not(:contains(' + search + ')').closest('.card-title').hide();
+// }
