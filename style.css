@@ -11,17 +11,12 @@
   padding: 0;
 }
 
-.top-container {
-  display: flex;
-  justify-content: center;
-  background-color: #e5f3f2;
-  height: 215px;
-}
-
 .top-org {
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+  posion: fixed;
+
 }
 
 h1,
@@ -42,13 +37,17 @@ p,
   display: flex;
   height: 220px;
   justify-content: center;
-  background-color: #e5f3f2;
 }
 
 .top-org {
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+  z-index: 1;
+  overflow: visible;
+  position: fixed;
+  width: 100%;
+  background-color: #e5f3f2;
 }
 
 h1 {
@@ -71,6 +70,9 @@ input,
   font-size: 15px;
 }
 
+.save-btn {
+  margin-bottom: 26px;
+}
 input {
   margin-bottom: 14px;
   padding-left: 5px;
@@ -97,6 +99,9 @@ input:focus {
 }
 
 /*BOTTOM CONTAINER*/
+.bottom {
+  overflow: scroll;
+}
 
 .search-form {
   padding-bottom: 12px;
