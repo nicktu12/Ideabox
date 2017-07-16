@@ -17,25 +17,33 @@ IndexCard.prototype.build = function() {
            <h3 class="card-title" contenteditable="true">${this.title}</h3>
            <img class="delete" src="assets/delete.svg" alt="delete button" />
            <p class="card-text" contenteditable="true">${this.body}</p>
-           <img class="up-vote" src="assets/upvote.svg" alt="up-vote button" />
-           <img class="down-vote" src="assets/downvote.svg" alt="down-vote button" />
+           <div class="up-vote" src="assets/upvote.svg" alt="up-vote button"></div>
+           <div class="down-vote" src="assets/downvote.svg" alt="down-vote button"></div>
            <p class="quality">quality: <span id="quality-text">${this.quality}</span></p>
          </article>`
        );
    }
 
-   $saveBtn.click(function(e){
-     e.preventDefault();
-     var title = $ideaTitle.val();
-     var body = $ideaBody.val();
+$saveBtn.click(function(e){
+  e.preventDefault();
+  var title = $ideaTitle.val();
+  var body = $ideaBody.val();
 
-     console.log(title);
-     console.log(body);
-     var newIndexCard = new IndexCard(title, body);
-     newIndexCard.build();
-     cardArray.push(newIndexCard);
-     console.log(cardArray);
+  console.log(title);
+  console.log(body);
+  var newIndexCard = new IndexCard(title, body);
+  newIndexCard.build();
+  cardArray.push(newIndexCard);
+  console.log(cardArray);
 });
+
+$('.bottom-container').on('click', '.delete', function(){
+     $(this).parent().remove();
+})
+
+
+
+
 
 
 //  IndexCard.prototype.upvote = function () {
