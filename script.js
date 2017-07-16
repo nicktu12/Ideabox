@@ -29,6 +29,8 @@ function addCard(e) {
 
   $('.up-vote').on('click', upvoteFunction);
 
+  $('.down-vote').on('click', downvoteFunction);
+
 };
 
 function deleteCard () {
@@ -38,18 +40,34 @@ function deleteCard () {
 };
 
 function upvoteFunction () {
-  // var $thisSpan = $('#quality-text')
-  // $qualityText = $thisSpan.val();
-  // $qualityText = innerHTML('#quality-text');
-  $qualityText = $('#quality-text')[0];
+  var $replaceText = $('#quality-text');
+  $qualityText = $('#quality-text').text();
   console.log($qualityText);
-  if ($qualityText === `<span id="quality-text">swill</span>`) {
+  if ($qualityText === 'swill') {
     console.log($('if'));
-    $qualityText.text('plausible')
-  } else if ($qualityText === `<span id="quality-text">plausible</span>`) {
-  //  ($(this).attr('src',"assets/upvote-hover.svg"))
+    $replaceText.text('plausible')
+  } else if ($qualityText === `plausible`) {
+    //  ($(this).attr('src',"assets/upvote-hover.svg"))
+    // can us this code for each if else statement to enable
+    // hovered states for buttons remain active when clicked
     console.log($('else if'));
-    $qualityText.text('genius')
+    $replaceText.text('genius')
+  }
+};
+
+function downvoteFunction () {
+  var $replaceText = $('#quality-text');
+  $qualityText = $('#quality-text').text();
+  console.log($qualityText);
+  if ($qualityText === 'genius') {
+    console.log($('if'));
+    $replaceText.text('plausible')
+  } else if ($qualityText === `plausible`) {
+  //  ($(this).attr('src',"assets/upvote-hover.svg"))
+  // can us this code for each if else statement to enable
+  // hovered states for buttons remain active when clicked
+    console.log($('else if'));
+    $replaceText.text('swill')
   }
 };
 
