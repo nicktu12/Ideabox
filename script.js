@@ -5,27 +5,26 @@ var $ideaBody = $('#idea-info');
 var $qualityText;
 var cardArray = [];
 
-var IndexCard = function(title, body, id) {
+var IndexCard = function (title, body, id) {
   this.title = title;
   this.body = body;
   this.quality = 'swill';
   this.id = id || Date.now();
-}
+};
 
-IndexCard.prototype.build = function() {
-       $('.bottom-container').prepend(
-         `<article id="${this.id}" class="card">
-           <h3 class="card-title" contenteditable="true">${this.title}</h3>
-           <div class="delete"></div>
-           <p class="card-text" contenteditable="true">${this.body}</p>
-           <div class="up-vote"></div>
-           <div class="down-vote"></div>
-           <p class="quality">quality: <span id="quality-text">${this.quality}</span></p>
-         </article>`
-       );
-   }
+IndexCard.prototype.build = function () {           $('.bottom-container').prepend(
+    `<article id="${this.id}" class="card">
+     <h3 class="card-title" contenteditable="true">${this.title}</h3>
+     <div class="delete"></div>
+     <p class="card-text" contenteditable="true">${this.body}</p>
+     <div class="up-vote"></div>
+     <div class="down-vote"></div>
+     <p class="quality">quality: <span id="quality-text">${this.quality}</span></p>
+   </article>`
+  );
+};
 
-$saveBtn.click(function(e){
+$saveBtn.click(function (e) {
   e.preventDefault();
   var title = $ideaTitle.val();
   var body = $ideaBody.val();
@@ -38,39 +37,36 @@ $saveBtn.click(function(e){
   console.log(cardArray);
 });
 
-$('.bottom-container').on('click', '.delete', function(){
-     $(this).parent().remove();
-})
+$('.bottom-container').on('click', '.delete', function () {
+  $(this).parent().remove();
+});
 
-$('.bottom-container').on('click', '.up-vote', function() {
+$('.bottom-container').on('click', '.up-vote', function () {
   $qualityText = $('#quality-text');
   var $changeQuality = $('#quality-text').text();
   console.log($changeQuality);
   if ($changeQuality === 'swill') {
-    $(this).parent().find('span').text('plausible')
-} else if ($changeQuality === 'plausible') {
-    $(this).parent().find('span').text('genius')
+    $(this).parent().find('span').text('plausible');
+  } else if ($changeQuality === 'plausible') {
+    $(this).parent().find('span').text('genius');
   }
-})
+});
 
-$('.bottom-container').on('click', '.down-vote', function() {
+$('.bottom-container').on('click', '.down-vote', function () {
   $qualityText = $('#quality-text');
   var $changeQuality = $('#quality-text').text();
   console.log($changeQuality);
   if ($changeQuality === 'genius') {
-    $(this).parent().find('span').text('plausible')
-} else if ($changeQuality === 'plausible') {
-    $(this).parent().find('span').text('swill')
+    $(this).parent().find('span').text('plausible');
+  } else if ($changeQuality === 'plausible') {
+    $(this).parent().find('span').text('swill');
   }
-})
-
-
-
+});
 
 //  IndexCard.prototype.upvote = function () {
 //      this.upvotes ++;
 //  },
- //
+//
 //  IndexCard.prototype.downvote = function () {
 //      this.upvotes --;
 //  }
