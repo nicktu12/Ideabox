@@ -54,6 +54,7 @@ h1 {
 }
 
 input,
+textarea,
 .save-btn {
   display: block;
   height: 26px;
@@ -65,17 +66,22 @@ input,
 .save-btn {
   margin-bottom: 26px;
 }
-input {
+
+input,
+textarea {
   margin-bottom: 14px;
   padding-left: 5px;
   border: 1.5px solid #dbd9d9;
+  color: 
 }
 
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: #dbd9d9;
 }
 
-input:focus {
+input:focus
+textarea:focus {
   outline-color: #00a79d;
   outline-style: auto;
 }
@@ -217,11 +223,13 @@ input:focus {
   }
 
   input,
+  textarea,
   .save-btn {
     width: 300px;
   }
 
-  input {
+  input,
+  textarea {
     margin-bottom: 8px;
     padding-left: 5px;
   }
