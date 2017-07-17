@@ -6,6 +6,7 @@ var $qualityText;
 var cardArray = [];
 
 var IndexCard = function(title, body, id) {
+  console.log($(this));
   this.title = title;
   this.body = body;
   this.quality = 'swill';
@@ -29,34 +30,29 @@ $saveBtn.click(function(e){
   e.preventDefault();
   var title = $ideaTitle.val();
   var body = $ideaBody.val();
-
-  console.log(title);
-  console.log(body);
   var newIndexCard = new IndexCard(title, body);
   newIndexCard.build();
   cardArray.push(newIndexCard);
-  console.log(cardArray);
 });
 
 $('.bottom-container').on('click', '.delete', function(){
      $(this).parent().remove();
 })
 
-$('.bottom-container').on('click', '.up-vote', function() {
-  $qualityText = $('#quality-text');
-  var $changeQuality = $('#quality-text').text();
-  console.log($changeQuality);
+$('.bottom-container').on('click', '.up-vote', upVote)
+
+function upVote() {
+  // var $changeQuality = $('#quality-text').text();
+  var $changeQuality = $(this).parent().find('span').text();
   if ($changeQuality === 'swill') {
-    $(this).parent().find('span').text('plausible')
+    $(this).parent().find('span').text('plausible');
 } else if ($changeQuality === 'plausible') {
     $(this).parent().find('span').text('genius')
   }
-})
+}
 
 $('.bottom-container').on('click', '.down-vote', function() {
-  $qualityText = $('#quality-text');
-  var $changeQuality = $('#quality-text').text();
-  console.log($changeQuality);
+  var $changeQuality = $(this).parent().find('span').text();
   if ($changeQuality === 'genius') {
     $(this).parent().find('span').text('plausible')
 } else if ($changeQuality === 'plausible') {
