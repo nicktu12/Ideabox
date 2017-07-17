@@ -2,23 +2,24 @@ var $saveBtn = $('.save-btn');
 var $card = $('.card');
 var $ideaTitle = $('#idea-title');
 var $ideaBody = $('#idea-info');
+var $qualityText;
 var cardArray = [];
 
 var IndexCard = function(title, body, id) {
   this.title = title;
   this.body = body;
   this.quality = 'swill';
-  this.id = id;
+  this.id = id || Date.now();
 }
 
 IndexCard.prototype.build = function() {
        $('.bottom-container').prepend(
          `<article id="${this.id}" class="card">
            <h3 class="card-title" contenteditable="true">${this.title}</h3>
-           <img class="delete" src="assets/delete.svg" alt="delete button" />
+           <div class="delete"></div>
            <p class="card-text" contenteditable="true">${this.body}</p>
-           <div class="up-vote" src="assets/upvote.svg" alt="up-vote button"></div>
-           <div class="down-vote" src="assets/downvote.svg" alt="down-vote button"></div>
+           <div class="up-vote"></div>
+           <div class="down-vote"></div>
            <p class="quality">quality: <span id="quality-text">${this.quality}</span></p>
          </article>`
        );
@@ -41,7 +42,27 @@ $('.bottom-container').on('click', '.delete', function(){
      $(this).parent().remove();
 })
 
+$('.bottom-container').on('click', '.up-vote', function() {
+  $qualityText = $('#quality-text');
+  var $changeQuality = $('#quality-text').text();
+  console.log($changeQuality);
+  if ($changeQuality === 'swill') {
+    $(this).parent().find('span').text('plausible')
+} else if ($changeQuality === 'plausible') {
+    $(this).parent().find('span').text('genius')
+  }
+})
 
+$('.bottom-container').on('click', '.down-vote', function() {
+  $qualityText = $('#quality-text');
+  var $changeQuality = $('#quality-text').text();
+  console.log($changeQuality);
+  if ($changeQuality === 'genius') {
+    $(this).parent().find('span').text('plausible')
+} else if ($changeQuality === 'plausible') {
+    $(this).parent().find('span').text('swill')
+  }
+})
 
 
 

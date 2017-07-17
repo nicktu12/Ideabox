@@ -137,14 +137,18 @@ input:focus {
 }
 
 .delete {
+  background-image: url(assets/delete.svg);
   position: absolute;
   top: 4px;
   left: 480px;
   display: inline-block;
   float: right;
-  height: auto;
+  height: 22px;
   width: 22px;
-  float: right;
+}
+
+.delete:hover {
+  background-image: url(assets/delete-hover.svg);
 }
 
 .card-text {
@@ -171,23 +175,31 @@ input:focus {
 
 .up-vote,
 .down-vote {
-  height: auto;
+  height: 22px;
   margin-right: 8px;
   width: 22px;
 }
 
 .up-vote {
+  background-image: url(assets/upvote.svg);
   position: absolute;
   top: 105px;
   left: 0;
 }
 
+.up-vote:hover {
+  background-image: url(assets/upvote-hover.svg);
+}
 .down-vote {
+  background-image: url(assets/downvote.svg);
   position: absolute;
   top: 105px;
   left: 40px;
 }
 
+.down-vote:hover {
+  background-image: url(assets/downvote-hover.svg);
+}
 
 /*MEDIA QUERIES*/
 @media (max-width: 770px) {
