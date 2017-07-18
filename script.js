@@ -3,6 +3,9 @@ var $card = $('.card');
 var $ideaTitle = $('#idea-title');
 var $ideaBody = $('#idea-info');
 var $qualityText;
+var indexCardArray = [];
+
+populateIndexCardArray();
 
 var IndexCard = function (title, body, id) {
   this.title = title;
@@ -59,9 +62,6 @@ $('.bottom-container').on('click', '.down-vote', function() {
     $(this).parent().find('span').text('swill');
   }
 });
-
-
-var indexCardArray = [];
 
 function addIndexCardToLocalStorage(newIndexCard) {
   var stringifiedIndexCard = JSON.stringify(newIndexCard);
