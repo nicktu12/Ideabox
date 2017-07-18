@@ -12,7 +12,8 @@ var IndexCard = function (title, body, id) {
   this.id = id || Date.now();
 };
 
-IndexCard.prototype.build = function () {           $('.bottom-container').prepend(
+IndexCard.prototype.build = function () {
+  $('.bottom-container').prepend(
     `<article id="${this.id}" class="card">
      <h3 class="card-title" contenteditable="true">${this.title}</h3>
      <div class="delete"></div>
@@ -49,6 +50,7 @@ function upVote() {
   }
 }
 
+
 $('.bottom-container').on('click', '.down-vote', function() {
   var $changeQuality = $(this).parent().find('span').text();
   if ($changeQuality === 'genius') {
@@ -58,6 +60,41 @@ $('.bottom-container').on('click', '.down-vote', function() {
   }
 });
 
+$saveBtn.on('click', clearInputFields);
+
+function clearInputFields() {
+  $ideaTitle.val('');
+  $ideaBody.val('');
+};
+
+$ideaBody.on('blur', saveBtnOn);
+
+function saveBtnOn() {
+  $saveBtn.css('background-color', '#00a79d');
+  $saveBtn.attr('disabled', false);
+}
+
+$('.search').on('keyup', runSearch);
+
+function runSearch() {
+  // var $searchInput = $('.search');
+  var search = $(this).val();
+  var title = $ideaTitle.val();
+  console.log('search is... ' + search);
+  if (search) {
+  var ssss =  $('.bottom-container').find("h3:contains(" + search + "))").closest('.card').show();
+  console.log(ssss);
+    $('.bottom-container').find("h3:not(:contains(" + search + "))").closest('.card').hide();
+  } else {
+    //hide it
+  }
+  //make it to lowercase so if they type it as Idea, then search idea... Idea still pops up for them
+  //.includes()
+}
+
+//
+// $("title:contains(' + search + ')").closest('.card').show();
+// $("title:not(:contains(' + search + ')").closest('.card').hide();
 //  IndexCard.prototype.upvote = function () {
 //      this.upvotes ++;
 //  },
@@ -154,7 +191,3 @@ $('.bottom-container').on('click', '.down-vote', function() {
 //
 // $saveButton.on('click', clearInputFields);
 //
-// function clearInputFields() {
-//   $('#idea-title').val('');
-//   $('#idea-info').val('');
-// };
