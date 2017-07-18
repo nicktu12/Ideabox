@@ -12,7 +12,8 @@ var IndexCard = function (title, body, id) {
   this.id = id || Date.now();
 };
 
-IndexCard.prototype.build = function () {           $('.bottom-container').prepend(
+IndexCard.prototype.build = function () {
+  $('.bottom-container').prepend(
     `<article id="${this.id}" class="card">
      <h3 class="card-title" contenteditable="true">${this.title}</h3>
      <div class="delete"></div>
@@ -29,12 +30,13 @@ $saveBtn.click(function (e) {
   var title = $ideaTitle.val();
   var body = $ideaBody.val();
 
-  console.log(title);
-  console.log(body);
+  // console.log(title);
+  // console.log(body);
   var newIndexCard = new IndexCard(title, body);
   newIndexCard.build();
   cardArray.push(newIndexCard);
-  console.log(cardArray);
+
+  // console.log(cardArray);
 });
 
 $('.bottom-container').on('click', '.delete', function () {
@@ -55,7 +57,8 @@ $('.bottom-container').on('click', '.up-vote', function () {
 $('.bottom-container').on('click', '.down-vote', function () {
   $qualityText = $('#quality-text');
   var $changeQuality = $('#quality-text').text();
-  console.log($changeQuality);
+
+  // console.log($changeQuality);
   if ($changeQuality === 'genius') {
     $(this).parent().find('span').text('plausible');
   } else if ($changeQuality === 'plausible') {
@@ -63,6 +66,41 @@ $('.bottom-container').on('click', '.down-vote', function () {
   }
 });
 
+$saveBtn.on('click', clearInputFields);
+
+function clearInputFields() {
+  $ideaTitle.val('');
+  $ideaBody.val('');
+};
+
+$ideaBody.on('blur', saveBtnOn);
+
+function saveBtnOn() {
+  $saveBtn.css('background-color', '#00a79d');
+  $saveBtn.attr('disabled', false);
+}
+
+$('.search').on('keyup', runSearch);
+
+function runSearch() {
+  // var $searchInput = $('.search');
+  var search = $(this).val();
+  var title = $ideaTitle.val();
+  console.log('search is... ' + search);
+  if (search) {
+  var ssss =  $('.bottom-container').find("h3:contains(" + search + "))").closest('.card').show();
+  console.log(ssss);
+    $('.bottom-container').find("h3:not(:contains(" + search + "))").closest('.card').hide();
+  } else {
+    //hide it
+  }
+  //make it to lowercase so if they type it as Idea, then search idea... Idea still pops up for them
+  //.includes()
+}
+
+//
+// $("title:contains(' + search + ')").closest('.card').show();
+// $("title:not(:contains(' + search + ')").closest('.card').hide();
 //  IndexCard.prototype.upvote = function () {
 //      this.upvotes ++;
 //  },
@@ -159,7 +197,3 @@ $('.bottom-container').on('click', '.down-vote', function () {
 //
 // $saveButton.on('click', clearInputFields);
 //
-// function clearInputFields() {
-//   $('#idea-title').val('');
-//   $('#idea-info').val('');
-// };
