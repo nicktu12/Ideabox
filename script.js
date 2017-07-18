@@ -88,7 +88,7 @@ function clearInputFields() {
   $ideaBody.val('');
 };
 
-$ideaBody.on('blur', saveBtnOn);
+$ideaBody.on('input', saveBtnOn);
 
 function saveBtnOn() {
   $saveBtn.css('background-color', '#00a79d');
@@ -99,16 +99,23 @@ $('.search').on('keyup', runSearch);
 
 function runSearch() {
   // var $searchInput = $('.search');
-  var search = $(this).val();
-  var title = $ideaTitle.val();
+  var search = $(this).val().toUpperCase();
+  // var title = $ideaTitle.val();
   console.log('search is... ' + search);
-  if (search) {
-  var ssss =  $('.bottom-container').find("h3:contains(" + search + "))").closest('.card').show();
-  console.log(ssss);
-    $('.bottom-container').find("h3:not(:contains(" + search + "))").closest('.card').hide();
-  } else {
-    //hide it
+  var searchedArray = indexCardArray.filter(function(newIndexCard) {
+    return newIndexCard.title.toUpperCase().includes(search);
+  })
+  $('.bottom-container').empty()
+  for (var i = 0; i < searchedArray; i++) {
+    build(searchedArray[i]);
   }
+}
+  // if (search) {
+  // var ssss =  $('.bottom-container').find("h3:contains(" + search + "))").closest('.card').show();
+  // console.log(ssss);
+  //   $('.bottom-container').find("h3:not(:contains(" + search + "))").closest('.card').hide();
+  // } else {
+    //hide it
+
   //make it to lowercase so if they type it as Idea, then search idea... Idea still pops up for them
   //.includes()
-}
