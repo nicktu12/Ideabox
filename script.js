@@ -3,7 +3,6 @@ var $card = $('.card');
 var $ideaTitle = $('#idea-title');
 var $ideaBody = $('#idea-info');
 var $qualityText;
-var cardArray = [];
 
 var IndexCard = function(title, body, id) {
   this.title = title;
@@ -34,8 +33,11 @@ $saveBtn.click(function(e){
   console.log(body);
   var newIndexCard = new IndexCard(title, body);
   newIndexCard.build();
-  cardArray.push(newIndexCard);
-  console.log(cardArray);
+  addIndexCardToLocalStorage(newIndexCard);
+  console.log(newIndexCard);
+
+  // cardArray.add();
+  // cardArray.store();
 });
 
 $('.bottom-container').on('click', '.delete', function(){
@@ -63,6 +65,83 @@ $('.bottom-container').on('click', '.down-vote', function() {
     $(this).parent().find('span').text('swill')
   }
 })
+
+var indexCardArray = [];
+
+function addIndexCardToLocalStorage(newIndexCard) {
+  var stringifiedIndexCard = JSON.stringify(newIndexCard);
+  localStorage.setItem(newIndexCard.id, stringifiedIndexCard);
+};
+
+function populateIndexCardArray(){
+  var objectKeys = Object.keys(localStorage);
+  console.log(objectKeys)
+  objectKeys.forEach(function(uniqueId){
+    console.log(JSON.parse(localStorage[uniqueId]))
+    indexCardArray.push(JSON.parse(localStorage[uniqueId]));
+  })
+}
+
+function populateDOM() {
+
+}
+
+// function to populate index card array
+// populate the dom
+//
+// function populateIndexCardArray() {
+//   // JSON.parse(localStorage.getItem('storedIdeas'));
+//   var newStoredIdea = localStorage.getItem('storedIdeas')
+//   console.log(JSON.parse(newStoredIdea))
+// };
+
+// populateIndexCardArray();
+
+//
+// add new cards to our array when created
+//
+// array to stringify
+//
+// string array to local storage
+//
+// retrieve string array from local storage
+//
+// parse string array
+//
+// repopulate idea
+
+// var cardArray = {
+//   arrayOfIdeas: [],
+//
+//   add: function(title, body) {
+//     this.ideaArray.push(new IndexCard(title, body));
+//     this.store();
+//   },
+//
+// // add new object to arrayOfIdeas
+//
+//   store: function() {
+//     localStorage.setItem('storedArray', JSON.stringify(this.arrayOfIdeas));
+//   },
+//
+// // store array of ideas
+// // update edited idea card
+//
+//   retrieve: function() {
+//   var retrievedIdeas = JSON.parse(localStorage.getItem('storedArray'));
+//     if (retrievedIdeas) {
+//       for (i = 0; i < retrievedIdeas.length; i++) {
+//         var idea = retrievedIdeas[i];
+//         this.ideaArray.push(new IndexCard(idea.title, idea.body, idea.quality, idea.id));
+//       }
+//     }
+//   },
+//
+// // retrieve arrayOfIdeas from localstorage
+//
+// // remove deleted idea card from card arrayOfIdeas
+
+
 
 
 
