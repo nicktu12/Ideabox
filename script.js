@@ -14,15 +14,23 @@ var IndexCard = function (title, body, id) {
   this.id = id || Date.now();
 };
 
-IndexCard.prototype.build = function () {
+var indexCardArray = [];
+
+// populateIndexCardArray();
+// populateDOM();
+
+function build(newIndexCard) {
+  var newTitle = newIndexCard.title;
+  var newBody = newIndexCard.body;
+  var newQuality = newIndexCard.quality;
   $('.bottom-container').prepend(
     `<article id="${this.id}" class="card">
-     <h3 class="card-title" contenteditable="true">${this.title}</h3>
+     <h3 class="card-title" contenteditable="true">${newTitle}</h3>
      <div class="delete"></div>
-     <p class="card-text" contenteditable="true">${this.body}</p>
+     <p class="card-text" contenteditable="true">${newBody}</p>
      <div class="up-vote"></div>
      <div class="down-vote"></div>
-     <p class="quality">quality: <span id="quality-text">${this.quality}</span></p>
+     <p class="quality">quality: <span id="quality-text">${newQuality}</span></p>
    </article>`
   );
 };
@@ -32,7 +40,8 @@ $saveBtn.click(function (e) {
   var title = $ideaTitle.val();
   var body = $ideaBody.val();
   var newIndexCard = new IndexCard(title, body);
-  newIndexCard.build();
+  build(newIndexCard);
+  indexCardArray.push(newIndexCard);
   addIndexCardToLocalStorage(newIndexCard);
   console.log(newIndexCard);
 });
@@ -41,20 +50,19 @@ $('.bottom-container').on('click', '.delete', function () {
   $(this).parent().remove();
 });
 
-$('.bottom-container').on('click', '.up-vote', upVote)
+$('.bottom-container').on('click', '.up-vote', upVote);
 
 function upVote() {
   // var $changeQuality = $('#quality-text').text();
   var $changeQuality = $(this).parent().find('span').text();
   if ($changeQuality === 'swill') {
     $(this).parent().find('span').text('plausible');
-} else if ($changeQuality === 'plausible') {
-    $(this).parent().find('span').text('genius')
+  } else if ($changeQuality === 'plausible') {
+    $(this).parent().find('span').text('genius');
   }
 }
 
-
-$('.bottom-container').on('click', '.down-vote', function() {
+$('.bottom-container').on('click', '.down-vote', function () {
   var $changeQuality = $(this).parent().find('span').text();
   if ($changeQuality === 'genius') {
     $(this).parent().find('span').text('plausible');
@@ -68,18 +76,22 @@ function addIndexCardToLocalStorage(newIndexCard) {
   localStorage.setItem(newIndexCard.id, stringifiedIndexCard);
 };
 
-function populateIndexCardArray(){
+function populateIndexCardArray() {
   var objectKeys = Object.keys(localStorage);
-  console.log(objectKeys)
-  objectKeys.forEach(function(uniqueId){
-    console.log(JSON.parse(localStorage[uniqueId]))
+  console.log(objectKeys);
+  objectKeys.forEach(function (uniqueId) {
+    console.log(JSON.parse(localStorage[uniqueId]));
     indexCardArray.push(JSON.parse(localStorage[uniqueId]));
-  })
+  });
 }
 
-function populateDOM() {
-
-}
+// function populateDOM(uniqueId) {
+//   var storedIdeas = JSON.parse(localStorage[uniqueId]);
+//   for (var i = 0; i < storedIdeas.length; i++) {
+//     build(storedIdeas[i]);
+//     console.log('populate dom!!!');
+//   }
+// }
 
 $saveBtn.on('click', clearInputFields);
 
@@ -88,7 +100,7 @@ function clearInputFields() {
   $ideaBody.val('');
 };
 
-$ideaBody.on('blur', saveBtnOn);
+$ideaBody.on('input', saveBtnOn);
 
 function saveBtnOn() {
   $saveBtn.css('background-color', '#00a79d');
@@ -98,17 +110,14 @@ function saveBtnOn() {
 $('.search').on('keyup', runSearch);
 
 function runSearch() {
-  // var $searchInput = $('.search');
-  var search = $(this).val();
-  var title = $ideaTitle.val();
+  var search = $(this).val().toUpperCase();
   console.log('search is... ' + search);
-  if (search) {
-  var ssss =  $('.bottom-container').find("h3:contains(" + search + "))").closest('.card').show();
-  console.log(ssss);
-    $('.bottom-container').find("h3:not(:contains(" + search + "))").closest('.card').hide();
-  } else {
-    //hide it
+  var searchedArray = indexCardArray.filter(function(newIndexCard) {
+    return newIndexCard.title.toUpperCase().includes(search) || newIndexCard.body.toUpperCase().includes(search) || newIndexCard.quality.toUpperCase().includes(search);
+  })
+  $('.bottom-container').empty()
+  console.log("should log array", searchedArray);
+  for (var i = 0; i < searchedArray.length; i++) {
+    build(searchedArray[i]);
   }
-  //make it to lowercase so if they type it as Idea, then search idea... Idea still pops up for them
-  //.includes()
 }
