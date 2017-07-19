@@ -3,7 +3,6 @@ var $card = $('.card');
 var $ideaTitle = $('#idea-title');
 var $ideaBody = $('#idea-info');
 var $qualityText;
-
 var indexCardArray = [];
 
 var IndexCard = function (title, body, id) {
@@ -20,8 +19,10 @@ function build(newIndexCard) {
   var newTitle = newIndexCard.title;
   var newBody = newIndexCard.body;
   var newQuality = newIndexCard.quality;
+  var newId = newIndexCard.id;
+  console.log('build', $(this));
   $('.bottom-container').prepend(
-    `<article id="${this.id}" class="card">
+    `<article id="${newId}" class="card">
      <h3 class="card-title" contenteditable="true">${newTitle}</h3>
      <div class="delete"></div>
      <p class="card-text" contenteditable="true">${newBody}</p>
@@ -51,15 +52,17 @@ $saveBtn.click(function (e) {
 
 $('.bottom-container').on('click', '.delete', function () {
   $(this).parent().remove();
+  localStorage.removeItem($(this).parent().prop('id'));
 });
 
 $('.bottom-container').on('click', '.up-vote', upVote);
 
 function upVote() {
-  // var $changeQuality = $('#quality-text').text();
   var $changeQuality = $(this).parent().find('span').text();
   if ($changeQuality === 'swill') {
     $(this).parent().find('span').text('plausible');
+    // console.log(this);
+    this.quality = 'plausible';
   } else if ($changeQuality === 'plausible') {
     $(this).parent().find('span').text('genius');
   }
