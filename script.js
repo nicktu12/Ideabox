@@ -12,8 +12,8 @@ var IndexCard = function (title, body, id) {
   this.id = id || Date.now();
 };
 
-// populateIndexCardArray();
-// populateDOM();
+populateIndexCardArray();
+populateDOM();
 
 function build(newIndexCard) {
   var newTitle = newIndexCard.title;
@@ -74,19 +74,14 @@ function addIndexCardToLocalStorage(newIndexCard) {
 
 function populateIndexCardArray() {
   var objectKeys = Object.keys(localStorage);
-  console.log(objectKeys);
   objectKeys.forEach(function (uniqueId) {
-    console.log(JSON.parse(localStorage[uniqueId]));
     indexCardArray.push(JSON.parse(localStorage[uniqueId]));
   });
 }
 
-//something is wrong - error about this JSON parse
 function populateDOM() {
-  var storedIdeas = JSON.parse(localStorage[uniqueId]);
-  for (var i = 0; i < storedIdeas.length; i++) {
-    build(storedIdeas[i]);
-    console.log('populate dom!!!');
+  for (var i = 0; i < indexCardArray.length; i++) {
+    build(indexCardArray[i]);
   }
 }
 
