@@ -3,6 +3,7 @@ var $card = $('.card');
 var $ideaTitle = $('#idea-title');
 var $ideaBody = $('#idea-info');
 var $qualityText;
+
 var indexCardArray = [];
 
 var IndexCard = function (title, body, id) {
@@ -29,7 +30,12 @@ function build(newIndexCard) {
      <p class="quality">quality: <span id="quality-text">${newQuality}</span></p>
    </article>`
   );
-};
+}
+
+function clearInputFields() {
+  $ideaTitle.val('');
+  $ideaBody.val('');
+}
 
 $saveBtn.click(function (e) {
   e.preventDefault();
@@ -40,6 +46,7 @@ $saveBtn.click(function (e) {
   indexCardArray.push(newIndexCard);
   addIndexCardToLocalStorage(newIndexCard);
   console.log(newIndexCard);
+  clearInputFields();
 });
 
 $('.bottom-container').on('click', '.delete', function () {
@@ -58,19 +65,21 @@ function upVote() {
   }
 }
 
-$('.bottom-container').on('click', '.down-vote', function () {
+$('.bottom-container').on('click', '.down-vote', downVote);
+
+function downVote() {
   var $changeQuality = $(this).parent().find('span').text();
   if ($changeQuality === 'genius') {
     $(this).parent().find('span').text('plausible');
   } else if ($changeQuality === 'plausible') {
     $(this).parent().find('span').text('swill');
   }
-});
+}
 
 function addIndexCardToLocalStorage(newIndexCard) {
   var stringifiedIndexCard = JSON.stringify(newIndexCard);
   localStorage.setItem(newIndexCard.id, stringifiedIndexCard);
-};
+}
 
 function populateIndexCardArray() {
   var objectKeys = Object.keys(localStorage);
@@ -84,13 +93,6 @@ function populateDOM() {
     build(indexCardArray[i]);
   }
 }
-
-$saveBtn.on('click', clearInputFields);
-
-function clearInputFields() {
-  $ideaTitle.val('');
-  $ideaBody.val('');
-};
 
 $ideaBody.on('input', saveBtnOn);
 
@@ -106,8 +108,8 @@ function runSearch() {
   console.log('search is... ' + search);
   var searchedArray = indexCardArray.filter(function(newIndexCard) {
     return newIndexCard.title.toUpperCase().includes(search) || newIndexCard.body.toUpperCase().includes(search) || newIndexCard.quality.toUpperCase().includes(search);
-  })
-  $('.bottom-container').empty()
+  });
+  $('.bottom-container').empty();
   console.log("should log array", searchedArray);
   for (var i = 0; i < searchedArray.length; i++) {
     build(searchedArray[i]);
