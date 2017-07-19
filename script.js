@@ -59,12 +59,18 @@ $('.bottom-container').on('click', '.up-vote', upVote);
 
 function upVote() {
   var $changeQuality = $(this).parent().find('span').text();
+  var id = $(this).parent().prop('id');
+  var specificCard = JSON.parse(localStorage.getItem(id));
   if ($changeQuality === 'swill') {
     $(this).parent().find('span').text('plausible');
-    // console.log(this);
-    this.quality = 'plausible';
+    specificCard.quality = 'plausible';
+    console.log(specificCard);
+    localStorage.setItem(id, JSON.stringify(specificCard));
   } else if ($changeQuality === 'plausible') {
     $(this).parent().find('span').text('genius');
+    specificCard.quality = 'genius';
+    console.log(specificCard);
+    localStorage.setItem(id, JSON.stringify(specificCard));
   }
 }
 
@@ -72,10 +78,16 @@ $('.bottom-container').on('click', '.down-vote', downVote);
 
 function downVote() {
   var $changeQuality = $(this).parent().find('span').text();
+  var id = $(this).parent().prop('id');
+  var specificCard = JSON.parse(localStorage.getItem(id));
   if ($changeQuality === 'genius') {
     $(this).parent().find('span').text('plausible');
+    specificCard.quality = 'plausible';
+    localStorage.setItem(id, JSON.stringify(specificCard));
   } else if ($changeQuality === 'plausible') {
     $(this).parent().find('span').text('swill');
+    specificCard.quality = 'swill';
+    localStorage.setItem(id, JSON.stringify(specificCard));
   }
 }
 
