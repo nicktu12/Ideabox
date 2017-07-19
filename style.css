@@ -88,18 +88,22 @@ input:focus {
 
 .save-btn {
   margin-bottom: 26px;
-  background-color: #6d6e71;
-  border: #6d6e71;
+  background-color: #00a79d;
+  border: #00a79d;
   color: #fff;
   outline: none;
 }
 
-.save-btn:hover {
-  background-color: #045e55;
-}
-
 .save-btn:disabled {
   background-color: #6d6e71;
+}
+
+.save-btn:disabled:hover {
+  background-color: #6d6e71;
+}
+
+.save-btn:hover {
+  background-color: #045e55;
 }
 
 /*BOTTOM CONTAINER*/
@@ -200,6 +204,7 @@ input:focus {
 .up-vote:hover {
   background-image: url(assets/upvote-hover.svg);
 }
+
 .down-vote {
   background-image: url(assets/downvote.svg);
   position: absolute;

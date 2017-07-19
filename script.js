@@ -36,6 +36,7 @@ function build(newIndexCard) {
 function clearInputFields() {
   $ideaTitle.val('');
   $ideaBody.val('');
+  $saveBtn.attr('disabled', true);
 }
 
 $saveBtn.click(function (e) {
@@ -100,7 +101,7 @@ function populateDOM() {
 $ideaBody.on('input', saveBtnOn);
 
 function saveBtnOn() {
-  $saveBtn.css('background-color', '#00a79d');
+  // $saveBtn.css('background-color', '#00a79d');
   $saveBtn.attr('disabled', false);
 }
 
