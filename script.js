@@ -5,16 +5,12 @@ var $ideaBody = $('#idea-info');
 var $qualityText;
 var indexCardArray = [];
 
-populateIndexCardArray();
-
 var IndexCard = function (title, body, id) {
   this.title = title;
   this.body = body;
   this.quality = 'swill';
   this.id = id || Date.now();
 };
-
-var indexCardArray = [];
 
 // populateIndexCardArray();
 // populateDOM();
@@ -85,13 +81,14 @@ function populateIndexCardArray() {
   });
 }
 
-// function populateDOM(uniqueId) {
-//   var storedIdeas = JSON.parse(localStorage[uniqueId]);
-//   for (var i = 0; i < storedIdeas.length; i++) {
-//     build(storedIdeas[i]);
-//     console.log('populate dom!!!');
-//   }
-// }
+//something is wrong - error about this JSON parse
+function populateDOM() {
+  var storedIdeas = JSON.parse(localStorage[uniqueId]);
+  for (var i = 0; i < storedIdeas.length; i++) {
+    build(storedIdeas[i]);
+    console.log('populate dom!!!');
+  }
+}
 
 $saveBtn.on('click', clearInputFields);
 
