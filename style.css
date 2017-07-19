@@ -142,8 +142,7 @@ input:focus {
   display: inline-block;
   margin-bottom: 12px;
   color: #6d6e71;
-  outline: none;
-
+  outline-color: #00a79d;
 }
 
 .delete {
@@ -170,7 +169,8 @@ input:focus {
   color: #939598;
   overflow: scroll;
   hyphens: auto;
-  height: 56px;
+  height: 42px;
+  outline-color: #00a79d;
 }
 
 .quality {
