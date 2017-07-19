@@ -20,14 +20,15 @@ h3,
 input,
 button,
 p,
-#quality-text {
+#quality-text,
+#idea-info-mq {
   font-family: "Open Sans";
 }
 
 /*TOP CONTAINER*/
 .top-container {
   display: flex;
-  height: 220px;
+  height: 240px;
   justify-content: center;
 }
 
@@ -54,7 +55,6 @@ h1 {
 }
 
 input,
-textarea,
 .save-btn {
   display: block;
   height: 26px;
@@ -63,12 +63,7 @@ textarea,
   font-size: 15px;
 }
 
-.save-btn {
-  margin-bottom: 26px;
-}
-
-input,
-textarea {
+input {
   margin-bottom: 14px;
   padding-left: 5px;
   border: 1.5px solid #dbd9d9;
@@ -77,25 +72,34 @@ textarea {
 }
 
 input::placeholder,
-textarea::placeholder {
+#idea-info-mq::placeholder,
+.search::placeholder {
   color: #dbd9d9;
 }
 
-input:focus
-textarea:focus {
+input:focus {
   outline-color: #00a79d;
   outline-style: auto;
 }
 
+#idea-info-mq {
+  display: none;
+}
+
 .save-btn {
+  margin-bottom: 26px;
   background-color: #6d6e71;
-  border: none;
+  border: #6d6e71;
   color: #fff;
   outline: none;
 }
 
 .save-btn:hover {
   background-color: #045e55;
+}
+
+.save-btn:disabled {
+  background-color: #6d6e71;
 }
 
 /*BOTTOM CONTAINER*/
@@ -121,10 +125,6 @@ textarea:focus {
   font-size: 15px;
 }
 
-.search::placeholder {
-  color: #dbd9d9;
-}
-
 .card {
   position: relative;
   display: block;
@@ -142,6 +142,8 @@ textarea:focus {
   display: inline-block;
   margin-bottom: 12px;
   color: #6d6e71;
+  outline: none;
+
 }
 
 .delete {
@@ -215,33 +217,50 @@ textarea:focus {
     position: static;
   }
 
-  .bottom {
-    overflow: auto;
-  }
-
   h1 {
     margin: 8px 0 8px 0;
     font-size: 34px;
   }
 
   input,
-  textarea,
   .save-btn {
+    height: 28px;
+  }
+
+  #idea-info {
+    display: none;
+  }
+
+  #idea-info-mq {
+    display: block;
+    height: 80px;
+    width: 300px;
+    margin-bottom: 8px;
+    padding-left: 5px;
+    border: 1.5px solid #dbd9d9;
+    color: #6d6e71;
+    outline-color: #00a79d;
+    font-size: 15px;
+    margin: auto;
+  }
+
+  .save-btn {
+    margin-top: 10px;
     width: 300px;
   }
 
-  input,
-  textarea {
-    margin-bottom: 8px;
+  input {
+    margin-bottom: 10px;
     padding-left: 5px;
+    width: 300px;
+  }
+
+  .bottom {
+    overflow: auto;
   }
 
   .search {
     width: 300px;
-  }
-
-  #idea-info {
-    height: 75px;
   }
 
   .card {
