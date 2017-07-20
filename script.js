@@ -43,6 +43,8 @@ function build(newIndexCard) {
      <div class="down-vote"></div>
      <p class="quality">quality: <span id="quality-text">${newQuality}</span></p>
    </article>`
+   $('.card-title').on('blur', updateTitle);
+   $('.card-text').on('blur', updateBody);
   );
   $('.card-title').on('blur', updateTitle);
   $('.card-text').on('blur', updateBody);
