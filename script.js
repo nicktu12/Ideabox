@@ -31,6 +31,8 @@ function build(newIndexCard) {
      <div class="down-vote"></div>
      <p class="quality">quality: <span id="quality-text">${newQuality}</span></p>
    </article>`
+   $('.card-title').on('blur', updateTitle);
+   $('.card-text').on('blur', updateBody);
   );
 }
 
@@ -132,8 +134,6 @@ function runSearch() {
   }
 }
 
-$('.card-title').on('blur', updateTitle);
-
 function updateTitle() {
   var $updatedTitle = $(this).parent().find('h3').text();
   var id = $(this).parent().prop('id');
@@ -143,7 +143,7 @@ function updateTitle() {
   localStorage.setItem(id, JSON.stringify(specificCard));
 }
 
-$('.card-text').on('blur', updateBody);
+
 
 function updateBody() {
   var $updatedBody = $(this).parent().find('.card-text').text();
