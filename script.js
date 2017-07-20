@@ -5,7 +5,6 @@ var $ideaBody = $('#idea-info');
 var $qualityText;
 var indexCardArray = [];
 
-
 var IndexCard = function (title, body, id) {
   this.title = title;
   this.body = body;
@@ -14,10 +13,23 @@ var IndexCard = function (title, body, id) {
 };
 
 populateIndexCardArray();
+
+function populateIndexCardArray() {
+  var objectKeys = Object.keys(localStorage);
+  objectKeys.forEach(function (uniqueId) {
+    indexCardArray.push(JSON.parse(localStorage[uniqueId]));
+  });
+}
+
 populateDOM();
 
-function build(newIndexCard) {
+function populateDOM() {
+  for (var i = 0; i < indexCardArray.length; i++) {
+    build(indexCardArray[i]);
+  }
+}
 
+function build(newIndexCard) {
   var newTitle = newIndexCard.title;
   var newBody = newIndexCard.body;
   var newQuality = newIndexCard.quality;
@@ -34,6 +46,8 @@ function build(newIndexCard) {
    $('.card-title').on('blur', updateTitle);
    $('.card-text').on('blur', updateBody);
   );
+  $('.card-title').on('blur', updateTitle);
+  $('.card-text').on('blur', updateBody);
 }
 
 function clearInputFields() {
@@ -52,7 +66,6 @@ function clickSave (e) {
   build(newIndexCard);
   indexCardArray.push(newIndexCard);
   addIndexCardToLocalStorage(newIndexCard);
-  // console.log(newIndexCard);
   clearInputFields();
 };
 
@@ -100,18 +113,18 @@ function addIndexCardToLocalStorage(newIndexCard) {
   localStorage.setItem(newIndexCard.id, stringifiedIndexCard);
 }
 
-function populateIndexCardArray() {
-  var objectKeys = Object.keys(localStorage);
-  objectKeys.forEach(function (uniqueId) {
-    indexCardArray.push(JSON.parse(localStorage[uniqueId]));
-  });
-}
-
-function populateDOM() {
-  for (var i = 0; i < indexCardArray.length; i++) {
-    build(indexCardArray[i]);
-  }
-}
+// function populateIndexCardArray() {
+//   var objectKeys = Object.keys(localStorage);
+//   objectKeys.forEach(function (uniqueId) {
+//     indexCardArray.push(JSON.parse(localStorage[uniqueId]));
+//   });
+// }
+//
+// function populateDOM() {
+//   for (var i = 0; i < indexCardArray.length; i++) {
+//     build(indexCardArray[i]);
+//   }
+// }
 
 $ideaBody.on('input', saveBtnOn);
 
@@ -138,12 +151,10 @@ function updateTitle() {
   var $updatedTitle = $(this).parent().find('h3').text();
   var id = $(this).parent().prop('id');
   var specificCard = JSON.parse(localStorage.getItem(id));
-  console.log($updatedTitle);
+  console.log('updatetitle function running');
   specificCard.title = $updatedTitle;
   localStorage.setItem(id, JSON.stringify(specificCard));
 }
-
-
 
 function updateBody() {
   var $updatedBody = $(this).parent().find('.card-text').text();
@@ -153,6 +164,8 @@ function updateBody() {
   specificCard.body = $updatedBody;
   localStorage.setItem(id, JSON.stringify(specificCard));
 }
+
+
 // $('.card-text').on('blur', editCardToStorage);
 
 // function editTitleToStorage() {
@@ -178,26 +191,3 @@ function updateBody() {
 //   // var stringifiedEditedCard = JSON.stringify(newIndexCard);
 //   // localStorage.setItem(newIndexCard.title, stringifiedEditedCard);
 // }
-
-// if (e.which === 13 || e.type === 'focusout') {
-//   console.log(e.type);
-//   var title = e.target.innerText;
-//   var specificCard = $(this).parent();
-//   var updateId = card.attr('id').replace('idea-card')
-//   var updateIndex =
-//
-//   indexCardArray[updateIndex].title = title;
-//   localStorage.setItem('card', JSON.stringify(specificCard));
-// }
-
-
-//
-// function editBodyToStorage() {
-//   var id = $(this).parent().prop('id');
-//   var body = $('.card-text').text();
-//   var specificCard = JSON.parse(localStorage.getItem(id));
-//   console.log(title);
-//   $(this).parent().find('p').text() = body;
-
-  // var stringifiedEditedCard = JSON.stringify(newIndexCard);
-  // localStorage.setItem(newIndexCard.title, stringifiedEditedCard);
