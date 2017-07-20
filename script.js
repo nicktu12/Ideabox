@@ -84,7 +84,6 @@ $('.bottom-container').on('click', '.delete', function () {
   localStorage.removeItem($(this).parent().prop('id'));
 });
 
-
 function downVote() {
   var $changeQuality = $(this).parent().find('span').text();
   var id = $(this).parent().prop('id');

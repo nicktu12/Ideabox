@@ -20,8 +20,8 @@ h3,
 input,
 button,
 p,
-#quality-text,
-#idea-info-mq {
+textarea,
+#quality-text {
   font-family: "Open Sans";
 }
 
@@ -55,6 +55,7 @@ h1 {
 }
 
 input,
+textarea,
 .save-btn {
   display: block;
   height: 26px;
@@ -63,7 +64,8 @@ input,
   font-size: 15px;
 }
 
-input {
+input,
+textarea {
   margin-bottom: 14px;
   padding-left: 5px;
   border: 1.5px solid #dbd9d9;
@@ -72,7 +74,7 @@ input {
 }
 
 input::placeholder,
-#idea-info-mq::placeholder,
+textarea::placeholder,
 .search::placeholder {
   color: #dbd9d9;
 }
@@ -80,10 +82,6 @@ input::placeholder,
 input:focus {
   outline-color: #00a79d;
   outline-style: auto;
-}
-
-#idea-info-mq {
-  display: none;
 }
 
 .save-btn {
@@ -109,10 +107,6 @@ input:focus {
 /*BOTTOM CONTAINER*/
 .bottom {
   overflow: scroll;
-}
-
-.search-form {
-  padding-bottom: 12px;
 }
 
 .search-form {
@@ -218,6 +212,7 @@ input:focus {
 
 /*MEDIA QUERIES*/
 @media (max-width: 770px) {
+
   .top-org {
     position: static;
   }
@@ -228,35 +223,23 @@ input:focus {
   }
 
   input,
+  textarea {
+    margin-bottom: 10px;
+    padding-left: 5px;
+    width: 300px;
+  }
+
+  input,
   .save-btn {
     height: 28px;
   }
 
-  #idea-info {
-    display: none;
-  }
-
-  #idea-info-mq {
-    display: block;
-    height: 80px;
-    width: 300px;
-    margin-bottom: 8px;
-    padding-left: 5px;
-    border: 1.5px solid #dbd9d9;
-    color: #6d6e71;
-    outline-color: #00a79d;
-    font-size: 15px;
-    margin: auto;
+  textarea {
+    height: 75px;
   }
 
   .save-btn {
     margin-top: 10px;
-    width: 300px;
-  }
-
-  input {
-    margin-bottom: 10px;
-    padding-left: 5px;
     width: 300px;
   }
 
