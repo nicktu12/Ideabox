@@ -118,7 +118,6 @@ function updateBody() {
   var $updatedBody = $(this).parent().find('.card-text').text();
   var id = $(this).parent().prop('id');
   var specificCard = JSON.parse(localStorage.getItem(id));
-  console.log($updatedBody);
   specificCard.body = $updatedBody;
   localStorage.setItem(id, JSON.stringify(specificCard));
 }
@@ -127,7 +126,6 @@ function updateTitle() {
   var $updatedTitle = $(this).parent().find('h3').text();
   var id = $(this).parent().prop('id');
   var specificCard = JSON.parse(localStorage.getItem(id));
-  console.log('updatetitle function running');
   specificCard.title = $updatedTitle;
   localStorage.setItem(id, JSON.stringify(specificCard));
 }
