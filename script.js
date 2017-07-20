@@ -22,7 +22,6 @@ function build(newIndexCard) {
   var newBody = newIndexCard.body;
   var newQuality = newIndexCard.quality;
   var newId = newIndexCard.id;
-  console.log(newBody);
   $('.bottom-container').prepend(
     `<article id="${newId}" class="card">
      <h3 class="card-title" contenteditable="true">${newTitle}</h3>
@@ -133,32 +132,52 @@ function runSearch() {
   }
 }
 
-$('.card-title').on('blur', editTitleToStorage);
+$('.card-title').on('blur', updateTitle);
+
+function updateTitle() {
+  var $updatedTitle = $(this).parent().find('h3').text();
+  var id = $(this).parent().prop('id');
+  var specificCard = JSON.parse(localStorage.getItem(id));
+  console.log($updatedTitle);
+  specificCard.title = $updatedTitle;
+  localStorage.setItem(id, JSON.stringify(specificCard));
+}
+
+$('.card-text').on('blur', updateBody);
+
+function updateBody() {
+  var $updatedBody = $(this).parent().find('.card-text').text();
+  var id = $(this).parent().prop('id');
+  var specificCard = JSON.parse(localStorage.getItem(id));
+  console.log($updatedBody);
+  specificCard.body = $updatedBody;
+  localStorage.setItem(id, JSON.stringify(specificCard));
+}
 // $('.card-text').on('blur', editCardToStorage);
 
-function editTitleToStorage() {
-  var id = $(this).parent().prop('id');
-  console.log('I am ID: '+id);
-  var title = $(this).text();
-  var specificCard = JSON.parse(localStorage.getItem(id));
-  //console.log(indexCardArray[0]);
-  // title = $(this).parent().find('h3').text();
-  var index = indexCardArray.reduce( function( cur, val, index ){
-
-    if( val.id === id && cur === -1 ) {
-        return index;
-    }
-    return cur;
-
-}, -1 );
-  var index = indexCardArray.findIndex(i => i.id === id);
-  console.log('I am Index: ' + index);
-  // indexCardArray.indexOf(id);
-  console.log(title);
-  localStorage.setItem(id, JSON.stringify(specificCard));
-  // var stringifiedEditedCard = JSON.stringify(newIndexCard);
-  // localStorage.setItem(newIndexCard.title, stringifiedEditedCard);
-}
+// function editTitleToStorage() {
+//   var id = $(this).parent().prop('id');
+//   console.log('I am ID: '+id);
+//   var title = $(this).text();
+//   var specificCard = JSON.parse(localStorage.getItem(id));
+//   //console.log(indexCardArray[0]);
+//   // title = $(this).parent().find('h3').text();
+//   var index = indexCardArray.reduce( function( cur, val, index ){
+//
+//     if( val.id === id && cur === -1 ) {
+//         return index;
+//     }
+//     return cur;
+//
+// }, -1 );
+//   var index = indexCardArray.findIndex(i => i.id === id);
+//   console.log('I am Index: ' + index);
+//   // indexCardArray.indexOf(id);
+//   console.log(title);
+//   localStorage.setItem(id, JSON.stringify(specificCard));
+//   // var stringifiedEditedCard = JSON.stringify(newIndexCard);
+//   // localStorage.setItem(newIndexCard.title, stringifiedEditedCard);
+// }
 
 // if (e.which === 13 || e.type === 'focusout') {
 //   console.log(e.type);
@@ -171,17 +190,7 @@ function editTitleToStorage() {
 //   localStorage.setItem('card', JSON.stringify(specificCard));
 // }
 
-function updateTitle() {
-  var $updatedTitle = $('.card-title').text();
-  console.log($updatedTitle)
-  var id = $(this).parent().prop('id');
-  console.log(id)
-  var specificCard = JSON.parse(localStorage.getItem(id));
-  console.log(this)
-  specificCard.title = $updatedTitle;
-  console.log(specificCard.title)
-  localStorage.setItem(id, JSON.stringify(specificCard));
-}
+
 //
 // function editBodyToStorage() {
 //   var id = $(this).parent().prop('id');
@@ -192,4 +201,3 @@ function updateTitle() {
 
   // var stringifiedEditedCard = JSON.stringify(newIndexCard);
   // localStorage.setItem(newIndexCard.title, stringifiedEditedCard);
-}
